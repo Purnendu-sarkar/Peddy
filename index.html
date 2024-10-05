@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEDDY</title>
+    <!-- DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+     <!-- Font Awesome CDN Link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                text_01: 'rgb(19, 19, 19)',
+                text_02: 'rgba(19, 19, 19, 0.6)',
+                text_03: 'rgba(19, 19, 19, 0.7)',
+                btn_colors: 'rgb(14, 122, 129)',
+                profile_color: 'rgba(14, 122, 129, 0.2)',
+
+              },
+              borderColor: {
+                'border-gray': 'rgba(19, 19, 19, 0.1)',
+              },
+               fontFamily: {
+                lato: ['Lato', 'sans-serif'],
+               }
+            }
+          }
+        }
+      </script>
+</head>
+<body>
+    <!-- Header: Contains the site’s main navigation, logo, and branding -->
+   <header>
+     <!-- Navbar -->
+     <nav class="p-4">
+        <div class="container mx-auto flex items-center justify-between">
+
+            <!-- Logo Section -->
+            <div class="logo flex gap-2">
+                <a href="#">
+                    <img class="w-8 h-8" src="images/logo.webp" alt="Logo">
+                </a>
+                <h1 class="font-black text-3xl text-text_01">Peddy</h1>
+            </div>
+
+            <!-- Menu for larger screens -->
+            <ul class="hidden md:flex space-x-8 text-text_01">
+                <li><a href="#home" class="hover:text-yellow-500">Home</a></li>
+                <li><a href="#shop" class="hover:text-yellow-500">Shop</a></li>
+                <li><a href="#contact" class="hover:text-yellow-500">Contact</a></li>
+            </ul>
+            <!-- Hamburger Menu for mobile screens -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-text_01 focus:outline-none">
+                    <i class="fa-solid fa-bars w-10"></i>
+                </button>
+            </div>
+            <!-- Profile Image -->
+            <div class="profile hidden md:block">
+                <a class="w-10 h-10 bg-[rgba(14, 122, 129, 0.2)]" href="#">
+                    <i class="fa-regular fa-user p-3 rounded-full bg-profile_color shadow"></i>
+                </a>
+                
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-black rounded-lg text-white mt-2 p-4">
+            <ul class="space-y-4">
+                <li><a href="#home" class="block hover:text-yellow-500">Home</a></li>
+                <li><a href="#shop" class="block hover:text-yellow-500">Shop</a></li>
+                <li><a href="#contact" class="block hover:text-yellow-500">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Banner Section -->
+     <section class="container mx-auto flex flex-col py-5 gap-5">
+        <!-- This section Text container -->
+         <div class="flex flex-col items-center gap-5">
+            <h3 class="md:w-1/2 text-center text-text_02 font-semibold text-3xl  ">Bringing Families Together ❤️‍🔥</h3>
+            <h2 class="md:w-1/2 text-center text-text_01 font-black text-7xl ">Your Path to Adoption Starts Here</h2>
+            <p class="md:w-1/2 text-center text-text_01 font-normal text-3xl">We're here to help pet lovers find their perfect furry companion, whether it's a dog or any other pet.</p>
+            <button class="btn bg-btn_colors text-white">View More</button>
+         </div>
+        <!-- This section Img Container -->
+         <div class=" ">
+            <img class="mx-auto" src="./images/pet.webp" alt="">
+         </div>
+     </section>
+   </header>
+   <!-- Main: Contains the primary content of the page -->
+   <main>
+    <!-- Best Friend Section -->
+     <section class="container mx-auto flex flex-col gap-5 p-1">
+        <!-- Best Friend SecTion -->
+        <div class="text-center md:w-1/2 mx-auto space-y-5">
+            <h2 class="font-black text-xl text-text_01">Adopt  Your  Best Friend</h2>
+            <p class="font-normal text-text_03">Adopt Your Best Friend encourages you to find a loyal and loving pet. Start your journey today and welcome your new best friend into your life!</p>
+        </div>
+        <!-- Cutomise BTN Cetegary -->
+         <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+            <button class="btn btn-error">cetegory</button>
+            <button class="btn btn-error">cetegory</button>
+            <button class="btn btn-error">cetegory</button>
+            <button class="btn btn-error">cetegory</button>
+         </div>
+     </section>
+    <!-- Best Deal Section -->
+     <section class="container mx-auto flex flex-col p-1 my-10">
+        <!-- Text Container -->
+        <div class="flex justify-between items-center">
+            <h3 class="font-black text-2xl text-text_01">Best Deal For you</h3>
+            <button class="btn bg-btn_colors text-white font-bold text-xl">Sort by Price</button>
+        </div>
+        <!-- Customize container -->
+         <div class="grid md:grid-cols-4 gap-6 my-8">
+            <!-- Left Side -->
+            <div class="md:col-span-3">
+                <!-- cutomise This Part -->
+                <div class="card w-96 box-border border border-gray-300 rounded-xl p-4 bg-white shadow-lg">
+                    <figure class="px-10 pt-10">
+                      <img
+                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Shoes"
+                        class="rounded-xl" />
+                    </figure>
+                    <div class="card-body items-center text-center">
+                      <h2 class="card-title">Shoes!</h2>
+                      <p>If a dog chews shoes whose shoes does he choose?</p>
+                      <div class="card-actions">
+                        <button class="btn btn-primary">Buy Now</button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <!-- Right Side -->
+            <div class="md:col-span-1 box-border border border-border-gray rounded-xl p-5 bg-white shadow-lg">
+                <!-- cutomize This part -->
+                 <div class="grid grid-cols-2 gap-5">
+                    <div class="">1</div>
+                    <div class="">2</div>
+                    <div class="">3</div>
+                    <div class="">4</div>
+                    <div class="">5</div>
+                    <div class="">6</div>
+                 </div>
+            </div>
+         </div>
+     </section>
+   </main>
+   <!-- Footer: Contains copyright information, links to privacy policies, and contact details -->
+   <footer></footer> 
+
+   <!--  -->
+   <!--  -->
+   <script>
+    // JavaScript to toggle the mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
