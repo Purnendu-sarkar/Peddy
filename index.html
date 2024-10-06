@@ -159,6 +159,21 @@
             </div>
          </div>
      </section>
+     <!-- Open the modal using ID.showModal() method -->
+<button id="showModalData" class="btn hidden" onclick="customModal.showModal()">open modal</button>
+<dialog id="customModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="modal-content">
+
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn w-full bg-green-200">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
    </main>
    <!-- Footer: Contains copyright information, links to privacy policies, and contact details -->
    <footer class="bg-gray-900 text-white py-12">

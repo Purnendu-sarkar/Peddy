@@ -17,10 +17,45 @@ async function fetchData(apiUrl) {
     }
 }
 
+// details button
+const loadDetails = async (petId) => {
+    console.log(petId);
+    const uri = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
+    const response = await fetch(uri);
+    const data = await response.json();
+    displayDetails(data.petData);
+}
+const displayDetails = (petData) => {
+    console.log(petData);
+    const detailContainer = document.getElementById("modal-content");
+    detailContainer.innerHTML=`
+    <div class="pet-card">
+      <img src="${petData.image}" alt="Cute kitten" class="pet-image w-full">
+      <h2>${petData.pet_name}</h2>
+     <ul class="pet-info">
+        <li>Breed: ${petData.breed || 'N/A'}</li>
+        <li>Gender: ${petData.gender || 'N/A'}</li>
+    <li>Birth:${petData.date_of_birth || 'N/A'}</li>
+    <li>Price:${petData.price || 'N/A'}$</li>
+    <li>Vaccinated status:${petData.vaccinated_status || 'N/A'}</li>
+  </ul>
+  <div class="details">
+    <h3>Details Information:</h3>
+    <p>${petData.pet_details}</p>
+  </div>
+  
+</div>
+
+    `
+    // Show
+    document.getElementById("customModal").showModal();
+
+}
 // Function to display the fetched data
 function displayData(pets) {
     const dataContainer = document.getElementById('data-container');
     dataContainer.innerHTML = '';
+    // console.log(pets);
 
     if(pets == 0) {
         dataContainer.classList.remove("grid");
@@ -40,6 +75,7 @@ function displayData(pets) {
     }
 
     pets.forEach(pet => {
+        //  console.log(pet)
         const petCard = document.createElement('div');
         petCard.className = "card box-border border bg-white rounded-xl shadow-lg overflow-hidden p-4";
         petCard.innerHTML = `
@@ -61,7 +97,9 @@ function displayData(pets) {
                         Adopt
                     </button>
                     <!-- Details Button -->
-                    <button class="border border-teal-500 text-teal-500 px-4 py-2 rounded hover:bg-teal-500 hover:text-white">
+                    <button onclick="loadDetails('${pet.
+                        petId
+                        }')" class="border border-teal-500 text-teal-500 px-4 py-2 rounded hover:bg-teal-500 hover:text-white">
                         Details
                     </button>
                 </div>
