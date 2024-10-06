@@ -77,7 +77,12 @@ function displayError() {
     dataContainer.innerHTML = '<p class="text-red-500">Error loading data.</p>';
 }
 
-
+const removeActiveClass=()=>{
+    const buttons = document.getElementsByClassName("category-btn");
+    for (let button of buttons) {
+        button.classList.remove("active");
+    }
+}
 
 const loadAllCetegory = async() => {
     const apiUrl2 = 'https://openapi.programming-hero.com/api/peddy/categories';
@@ -100,7 +105,12 @@ const loadCetegoryPets = (category) => {
     //alert(category);
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
     .then((response) => response.json())
-    .then((data) => displayData(data.data))
+    .then((data) => {
+        removeActiveClass();
+        const activeBtn = document.getElementById(`btn-${category}`)
+        activeBtn.classList.add("active");
+        displayData(data.data);
+    })
     .catch((error) => console.log(error));
 }
 
@@ -112,7 +122,7 @@ const displayCategories = (data) => {
         const buttonContainer = document.createElement("div")
         // buttonContainer.classList = "btn";
         buttonContainer.innerHTML =`
-        <button onclick="loadCetegoryPets('${item.category}')" class="btn text-center justify-center">
+        <button id="btn-${item.category}" onclick="loadCetegoryPets('${item.category}')" class="btn category-btn text-center justify-center">
          <img class="h-1/2" src="${item.category_icon}" alt="${item.category} Icon">
             <div class="text-center mt-2">
                 <h3 class="font-bold text-lg">${item.category}</h3>
