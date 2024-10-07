@@ -47,6 +47,51 @@ const displayPicture = (picture) => {
     `;
     likeContainer.appendChild(likeCard);
 }
+// Adopt Button
+function handleAdoptButton(buttonElement) {
+    let countdown = 3;
+    buttonElement.disabled = true;
+
+    // Show modal
+    openAdoptModal();
+
+    const interval = setInterval(() => {
+        if (countdown > 0) {
+            buttonElement.innerText = countdown;
+            countdown--;
+        } else {
+            buttonElement.innerText = "Adopted";
+            clearInterval(interval);
+            buttonElement.classList.add('opacity-50', 'cursor-not-allowed');
+            closeAdoptModal();
+        }
+    }, 800);
+}
+
+function openAdoptModal() {
+    const modal = document.getElementById('adoptModal');
+    modal.classList.remove('hidden');
+    let countdown = 3;
+    const closeModalButton = document.getElementById('closeModalButton');
+    closeModalButton.innerText = `${countdown}`;
+
+    const interval = setInterval(() => {
+        countdown--;
+        if (countdown > 0) {
+            closeModalButton.innerText = `${countdown}`;
+        } else {
+            clearInterval(interval);
+            closeAdoptModal(); 
+        }
+    }, 1000);
+}
+
+
+function closeAdoptModal() {
+    const modal = document.getElementById('adoptModal');
+    modal.classList.add('hidden');
+}
+
 
 // details button
 const loadDetails = async (petId) => {
@@ -126,7 +171,7 @@ function displayData(pets) {
                         <i class="fas fa-thumbs-up"></i>
                     </button>
                     <!-- Adopt Button -->
-                    <button class="border border-teal-500 text-teal-500 px-4 py-2 rounded hover:bg-teal-500 hover:text-white">
+                    <button onclick="handleAdoptButton(this)" class="border border-teal-500 text-teal-500 px-4 py-2 rounded hover:bg-teal-500 hover:text-white">
                         Adopt
                     </button>
                     <!-- Details Button -->
