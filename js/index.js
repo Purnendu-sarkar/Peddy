@@ -16,17 +16,48 @@ async function fetchData(apiUrl) {
         displayError(); // Call function to display error message
     }
 }
+// Like Button
+const loadPicture = async (picture) => {
+    // console.log(picture);
+    const uri = `https://openapi.programming-hero.com/api/peddy/pet/${picture}`;
+    try {
+        const response = await fetch(uri);
+        const data = await response.json();
+        console.log(data.petData);
+        if (data.petData) {
+            displayPicture(data.petData);
+        } else {
+            console.error('No pet data found');
+        }
+    } catch (error) {
+        console.error('Failed to load picture', error);
+    }
+}
+const displayPicture = (picture) => {
+    console.log(picture);
+    const likeContainer = document.getElementById("image-content");
+    if (!likeContainer) {
+        console.error('No container found with id "image-content"');
+        return;
+    }
+    const likeCard = document.createElement('div');
+    likeCard.className = "w-full h-24 object-cover rounded-xl gap-5";
+    likeCard.innerHTML = `
+    <img class="rounded-xl" src="${picture.image}" alt="Pet Image">
+    `;
+    likeContainer.appendChild(likeCard);
+}
 
 // details button
 const loadDetails = async (petId) => {
-    console.log(petId);
+    // console.log(petId);
     const uri = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
     const response = await fetch(uri);
     const data = await response.json();
     displayDetails(data.petData);
 }
 const displayDetails = (petData) => {
-    console.log(petData);
+    // console.log(petData);
     const detailContainer = document.getElementById("modal-content");
     detailContainer.innerHTML=`
     <div class="pet-card">
@@ -44,7 +75,7 @@ const displayDetails = (petData) => {
     <p>${petData.pet_details}</p>
   </div>
   
-</div>
+ </div>
 
     `
     // Show
@@ -89,7 +120,9 @@ function displayData(pets) {
                 <!-- Buttons -->
                 <div class="flex items-center justify-between space-x-2">
                     <!-- Like Button -->
-                    <button class="flex justify-center items-center border border-teal-500 text-teal-500 px-4 py-2 rounded hover:bg-teal-500 hover:text-white">
+                    <button onclick="loadPicture('${pet.
+                        petId
+                        }')" class="flex justify-center items-center border border-teal-500 text-teal-500 px-4 py-2 rounded hover:bg-teal-500 hover:text-white">
                         <i class="fas fa-thumbs-up"></i>
                     </button>
                     <!-- Adopt Button -->
