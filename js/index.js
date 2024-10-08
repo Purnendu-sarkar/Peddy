@@ -1,10 +1,16 @@
-document.addEventListener("DOMContentLoaded", async function() {
-    const apiUrl = 'https://openapi.programming-hero.com/api/peddy/pets'; //API URL
+// document.addEventListener("DOMContentLoaded", async function() {
+//     const apiUrl = 'https://openapi.programming-hero.com/api/peddy/pets'; //API URL
 
+//     // Fetch and display data when the DOM is loaded
+//     await fetchData(apiUrl);
+// });
+const loadAllCetegories = async() => {
+    document.getElementById("spiner").style.display="none";
+    const apiUrl = 'https://openapi.programming-hero.com/api/peddy/pets';
+    
     // Fetch and display data when the DOM is loaded
     await fetchData(apiUrl);
-});
-
+}
 // Function to fetch data from the API
 async function fetchData(apiUrl) {
     try {
@@ -187,10 +193,19 @@ function displayData(pets) {
     });
 }
 
-// Function to display error message
+// // Function to display error message
+// function displayError() {
+//     const dataContainer = document.getElementById('data-container');
+//     dataContainer.innerHTML = '<p class="text-red-500">Error loading data.</p>';
+// }
 function displayError() {
     const dataContainer = document.getElementById('data-container');
-    dataContainer.innerHTML = '<p class="text-red-500">Error loading data.</p>';
+    dataContainer.innerHTML = `
+        <div class="flex flex-col justify-center items-center bg-red-100 text-red-600 p-4 rounded">
+            <p>Error loading data. Please check your internet connection or try again later.</p>
+            <button class="btn bg-btn_colors text-white mt-2" onclick="loadAllCetegories()">Retry</button>
+        </div>
+    `;
 }
 
 const removeActiveClass=()=>{
@@ -249,6 +264,12 @@ const displayCategories = (data) => {
         catagoryContainer.append(buttonContainer);
     });
 }
+const handleSurch = () => {
+    document.getElementById("spiner").style.display="block";
 
-
+    setTimeout(function () {
+        loadAllCetegories()
+    },3000)
+}
+handleSurch()
 loadAllCetegory()

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PEDDY</title>
+    <link rel="icon" href="./images/logo.webp" type="image/x-icon">
     <!-- DaisyUI CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -122,7 +123,7 @@
         <!-- Text Container -->
         <div class="flex justify-between items-center">
             <h3 class="font-black text-2xl text-text_01">Best Deal For you</h3>
-            <button class="btn bg-btn_colors text-white font-bold text-xl">Sort by Price</button>
+            <button onclick="sortPrices()" class="btn bg-btn_colors text-white font-bold text-xl"> Sort by Price </button>
         </div>
         <!-- Customize container -->
          <div class="grid md:grid-cols-4 gap-6 my-8">
@@ -185,6 +186,10 @@
         </p>
     </div>
 </div>
+<!-- Spiner -->
+ <div id="spiner" class="hidden text-center">
+    <span class="loading loading-infinity w-52 loading-lg"></span>
+ </div>
 
    </main>
    <!-- Footer: Contains copyright information, links to privacy policies, and contact details -->
