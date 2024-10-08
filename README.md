@@ -18,4 +18,4 @@ PEDDY is a web application designed to connect pet lovers with their perfect fur
 - **Spread and Rest Operators**: Used for array manipulation and function arguments.
 
 ## Live Link
-[View the deployed project here] ([https://your-live-link.com](https://p-peddy.netlify.app/))
+[View the deployed project here](https://p-peddy.netlify.app/))
