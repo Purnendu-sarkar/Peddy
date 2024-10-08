@@ -113,16 +113,17 @@ const displayDetails = (petData) => {
     detailContainer.innerHTML=`
     <div class="pet-card">
       <img src="${petData.image}" alt="Cute kitten" class="pet-image w-full">
-      <h2>${petData.pet_name}</h2>
-     <ul class="pet-info">
-        <li>Breed: ${petData.breed || 'N/A'}</li>
-        <li>Gender: ${petData.gender || 'N/A'}</li>
-    <li>Birth:${petData.date_of_birth || 'N/A'}</li>
-    <li>Price:${petData.price || 'N/A'}$</li>
-    <li>Vaccinated status:${petData.vaccinated_status || 'N/A'}</li>
+      <h2 class="text-2xl font-black">${petData.pet_name}</h2>
+     <ul class="grid grid-cols-2">
+        <li><i class="fas fa-th"></i> Breed: ${petData.breed || 'N/A'}</li>
+        <li><i class="fas fa-transgender"></i> Gender: ${petData.gender || 'N/A'}</li>
+        <li><i class="fas fa-calendar"></i> Birth:${petData.date_of_birth || 'N/A'}</li>
+        <li><i class="fas fa-dollar-sign"></i> Price:${petData.price || 'N/A'}$</li>
+        <li><i class="fas fa-transgender"></i> Vaccinated status:${petData.vaccinated_status || 'N/A'}</li>
   </ul>
+   <div class="divider"></div>
   <div class="details">
-    <h3>Details Information:</h3>
+    <h3 class=" text-xl font-extrabold">Details Information:</h3>
     <p>${petData.pet_details}</p>
   </div>
   
@@ -164,10 +165,10 @@ function displayData(pets) {
             <img src="${pet.image}" alt="${pet.pet_name} Image" class="rounded-lg object-cover">
             <div class="p-4">
                 <h3 class="font-bold text-lg">${pet.pet_name}</h3>
-                <p class="text-sm text-gray-600">Breed: ${pet.breed || 'N/A'}</p>
-                <p class="text-sm text-gray-600">Birth: ${pet.date_of_birth || 'N/A'}</p>
-                <p class="text-sm text-gray-600">Gender: ${pet.gender}</p>
-                <p class="text-sm text-gray-600">Price: $${pet.price || 'N/A'}</p>
+                <p class="text-sm text-gray-600"><i class="fas fa-th"></i> Breed: ${pet.breed || 'N/A'}</p>
+                <p class="text-sm text-gray-600"><i class="fas fa-calendar"></i> Birth: ${pet.date_of_birth || 'N/A'}</p>
+                <p class="text-sm text-gray-600"><i class="fas fa-transgender"></i> Gender: ${pet.gender}</p>
+                <p class="text-sm text-gray-600"><i class="fas fa-dollar-sign"></i> Price: $${pet.price || 'N/A'}</p>
                 <!-- Buttons -->
                 <div class="flex items-center justify-between space-x-2">
                     <!-- Like Button -->
@@ -234,6 +235,7 @@ async function fetchData2(apiUrl2) {
 
 const loadCetegoryPets = (category) => {
     //alert(category);
+    document.getElementById("spiner").style.display="none";
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
     .then((response) => response.json())
     .then((data) => {
@@ -253,7 +255,7 @@ const displayCategories = (data) => {
         const buttonContainer = document.createElement("div")
         // buttonContainer.classList = "btn";
         buttonContainer.innerHTML =`
-        <button id="btn-${item.category}" onclick="loadCetegoryPets('${item.category}')" class="btn category-btn text-center justify-center">
+        <button id="btn-${item.category}" onclick="handleSurch2('${item.category}')" class="btn category-btn text-center justify-center">
          <img class="h-1/2" src="${item.category_icon}" alt="${item.category} Icon">
             <div class="text-center mt-2">
                 <h3 class="font-bold text-lg">${item.category}</h3>
@@ -263,6 +265,13 @@ const displayCategories = (data) => {
         // add button to catagory caontainer
         catagoryContainer.append(buttonContainer);
     });
+}
+const handleSurch2 = (aca) => {
+    document.getElementById("spiner").style.display="block";
+
+    setTimeout(function () {
+        loadCetegoryPets(aca)
+    },3000)
 }
 const handleSurch = () => {
     document.getElementById("spiner").style.display="block";
